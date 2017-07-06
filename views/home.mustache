@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../public/styles.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="home">
+     <div class="userRoom">
+    <h1> Welcome Home </h1>
+    {{#userid}}
+    <h3>Signed in as {{.}}
+      <h3>
+        {{/userid}}
+        <form action="/message" method="post">
+          <textarea rows="4" cols="50" autofocus="autofocus" name="message">
+   </textarea>
+          <input type="submit" value="submit">
+        </form>
+  </div>
+
+  <div class="friendsRoom">
+    <h1>What your friends are saying</h1>
+           {{#friendsMessages}}
+           <p>{{body}}</p>
+           {{/friendsMessages}}
+  </div>
+  </div>
+
+</body>
+
+</html>

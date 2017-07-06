@@ -2,7 +2,11 @@ const express = require("express");
 const mustacheExpress = require("mustache-express");
 const bodyParser = require("body-parser");
 const session = require("express-session");
-const localRouter = require('./routes/router')
+const authRoutes = require('./router/authroutes')
+const signupRoutes = require('./router/signuproutes')
+const messageRoutes = require('./router/messageroutes')
+const sessionConfig = require("./sessionConfig");
+const models = require("./models");
 const app = express();
 const port = process.env.PORT || 8000;
 
@@ -11,29 +15,19 @@ const port = process.env.PORT || 8000;
 app.engine("mustache", mustacheExpress());
 app.set("views", "./views");
 app.set("view engine", "mustache");
+app.use(session(sessionConfig));
 
 //Middleware
 app.use("/", express.static("./public"));
 app.use(bodyParser.urlencoded({extended:false}));
-app.use("/", localRouter )
+app.use(session())
+authRoutes(app)
+// app.use('/signup',signupRoute)
+signupRoutes(app);
+messageRoutes(app);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// ============================================================
    app.listen(port, function() {
     console.log("Server is running on port", port);
 })
