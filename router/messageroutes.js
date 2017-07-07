@@ -4,6 +4,16 @@ var models = require("../models");
 
 function messageroutes(app) {
 
+  app.post("/like", function(req, res){
+  
+  var newLike = models.like.build(req.body);
+   newLike.save().then(function(savedLike){
+     res.redirect("/");
+    
+   })
+    
+  })
+
 app.get("/message", function(req, res){
     res.render("home")
 })
@@ -18,8 +28,11 @@ app.post("/message", function(req, res){
     newMessage
       .save()
       .then(function(newMessage) {
-        return res.redirect("/message");
+        return res.redirect("/");
       })
+
+
+      
 })};
 
 module.exports = messageroutes

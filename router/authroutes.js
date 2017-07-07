@@ -3,8 +3,19 @@ var models = require("../models");
 function authroutes(app) {
   app.get("/", function(req, res) {
     if (req.session.user) {
-      models.message.findAll({}).then(function(foundMessage) {
-        console.log("foundmessage", foundMessage);
+      models.message.findAll({
+        order:[["createdAt", "DESC"]],
+      include:[
+             {
+                 model: models.user, 
+                 as:'author',
+                
+             },
+             {
+               model:models.like,
+               as: "likes"
+             }
+             ] }).then(function(foundMessage) {
         res.render("home", {
           userid: req.session.user.displayname,
           friendsMessages: foundMessage

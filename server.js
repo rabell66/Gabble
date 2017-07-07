@@ -8,7 +8,7 @@ const messageRoutes = require('./router/messageroutes')
 const sessionConfig = require("./sessionConfig");
 const models = require("./models");
 const app = express();
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 7000;
 
 
 //Set View Engine
