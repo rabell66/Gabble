@@ -1,31 +1,117 @@
-html{
-    background-image:url("images/Telepathy.png");
-    background-repeat: no-repeat;
-    background-size: cover;
+body {
+  background-image: url("images/Telepathy.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.homeBackground{
+    background-image: url("images/Home.png");
+}
+#digital {
+  background-image: url("images/digital.png");
+  background-repeat: no-repeat;
+  background-size: cover; 
+  color:#4DAEDA;
+}
+a{
+    position: relative;
+    left: 90vw;
+    color: #6291A4;
+    font-size: x-large;
+}
+
+#digital a{
+    color: #2BF9FE;
+    position: relative;
+    left: 89vw;
+}
+
+.signupContainer{
+text-align: center;
+}
+.signupContainer h1{ 
+    text-shadow: -2px 1px white;}
+.newUser{
+    margin: 0 0 0 38vw;
+}
+.newUser input {
+    background-color:transparent;
+    Color:white;
+  padding: .5vw;
+  margin: .5vw;
+}
+.newUser input::placeholder{
+    color:white;
+}
+fieldset {
+  background-color: transparent;
+  width: 15vw;
+  height: 6vw;
+  position: relative;
+  left: 41.3vw;
+  top: 5vw;
+  text-align: center;
+  padding: 1vw;
+  border-radius: 63px;
+  border-color: #f8fcfe;
+}
+fieldset input {
+  padding: 0 0 5px;
+  margin: 0 0 5px;
+  background-color:transparent;
+  font-style: italic;
+  font-weight: bolder;
+  font-size: 12px;
+}
+
+.signup input {
+  position: relative;
+  left: 47vw;
+  top: 6vw;
+}
+
+.home {
+  display: flex;
+}
+.friendsRoom {
+    overflow-y: scroll;
+  flex: 1 1 100%;
+  color: #c4e3f5;
+ 
+  
+}
+.friendsRoom h1{
+    text-decoration:underline;
+}
+.friendsRoom p {
+    color:#12405A;
+    margin: -1px;
+}
+.userRoom {
+    overflow-y: scroll;
+    color: #c4e3f5;
+    flex: 1 1 100%;
+    margin: 0 0 0 5vw;
+
+}
+.userRoom h1{
+    text-decoration: underline;
+}
+
+
+.userRoom p{
+    background-color: white;
+  
+    border-color: white;
+    color: black;
+    padding: 1vw;
+    margin: 0 21.5vw 0 0;
 
 }
 
-.home{
-    display:flex;
-}
-.friendsRoom{
-flex: 1 1 100%;
-color:#0D2C44
 
-
-
-
-}
-.userRoom{
-    color:#41A2D6;
-    flex:1 1 100%;
-   
-}
-
-.messages p{
- border:1px solid black;
- padding:.5vw;
- width:30vw;
- background-color:white;
-
+.messages p {
+  border: 1px solid black;
+  padding: .5vw;
+  width: 30vw;
+  background-color: white;
 }

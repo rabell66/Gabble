@@ -9,16 +9,17 @@
   <title>Document</title>
 </head>
 
-<body>
+<body class ="homeBackground">
+<a href="/logout">Log-Out</a>   
   <div class="home">
      <div class="userRoom">
     <h1> Welcome Home </h1>
-    {{#userid}}
+    {{#user}}
     <h3>Signed in as {{.}}
       <h3>
-     
+  
 
-        {{/userid}}
+        {{/user}}
         <form action="/message" method="post">
           <textarea rows="4" cols="50" autofocus="autofocus" name="message">
    </textarea>
@@ -28,24 +29,35 @@
          {{#userMessage}}
            <p>{{body}}</p>
            <form class = "deletes" action="/delete" method="post">
-            <input type ="hidden" name="authorid" value ={{author.id}}>
+            <input type ="hidden" name="authorid" value ={{userid}}>
             <input type ="hidden" name="messageid" value ={{id}}>
             <input class="delBtn" type="submit" value = "Delete">
-            </form>
+            </form>Liked by: &nbsp {{likes.length}} &nbsp users
+             <select>
+            {{#likes}}
+             <option>{{author.name}}</option>
+           {{/likes}}
+           {{^likes}}
+           {{/likes}}
+
+        </select>
            {{/userMessage}}
   </div>
 
   <div class="friendsRoom">
-    <h1>What your friends are saying</h1>
+   <h1>What your friends are saying</h1>
+   
     <div class="messages">
            {{#friendsMessages}}
-           <h3>{{author.name}}</h3>
+           <h3>{{author.displayname}}</h3>
            <p>{{body}}</p>
            <form class="likes" action="/like" method="post">
            <input type ="hidden" name="messageid" value ={{id}}>
-           <input type ="hidden" name="authorid" value ={{author.id}}>
-           <input class='likeBtn' value="like" type="submit" ></form>Liked by: &nbsp {{likes.length}} &nbsp users
-           </form>
+           <input type ="hidden" name="authorid" value ={{userid}}>
+        
+           <input class='likeBtn' value="like" type="submit" >
+           </form>Liked by: &nbsp {{likes.length}} &nbsp users
+           
          <select>
             {{#likes}}
              <option>{{author.name}}</option>

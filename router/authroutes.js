@@ -30,11 +30,12 @@ function authroutes(app) {
             if ((foundMessages[i].authorid == req.session.user.id)) {
               userMessages.push(foundMessages[i]);
               foundMessages.splice(i, 1);
+             
             }
           }
-
           res.render("home", {
-            userid: req.session.user.displayname,
+            user: req.session.user.displayname,
+            userid:req.session.user.id,
             friendsMessages: foundMessages,
             userMessage: userMessages
           });

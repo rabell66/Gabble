@@ -7,25 +7,26 @@ function messageroutes(app) {
   app.post("/like", function(req, res){
     var authorid = req.body.authorid;
     var messageid = req.body.messageid;
-    models.like
-      .findOne({
-        where: {
-          authorid: authorid,
-          messageid: messageid
-        }
-      })
-      .then(function(foundlike) {
-        
-        return res.redirect("/");
-      })
+   console.log("NEW",models.like)
+       models.like.findOne(
+          {where:{
+            authorid:authorid,
+            messageid:messageid
+          }}).then(function(alreadyLiked){
+           
+       if(alreadyLiked){
+         console.log("Made it here!!!!")
+         return res.redirect("/")
+          }
+          var newLike = models.like.build(req.body);
+   newLike.save().then(function(savedLike){
+     return res.redirect("/");
+      } )})
       .catch(function(err) {
         return res.redirect("/login");
       });
-      var newLike = models.like.build(req.body);
-   newLike.save().then(function(savedLike){
-     res.redirect("/");
     
-   })
+      
   
   });
 
@@ -51,7 +52,7 @@ function messageroutes(app) {
     })
       .catch(function(err) {
         console.log("This is the", err)
-        // return res.redirect("/login");
+        return res.redirect("/login");
       });
   
   

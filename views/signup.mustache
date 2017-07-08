@@ -4,19 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/styles.css">
     <title>Document</title>
 </head>
-<body>
-    <form action="/signup" method="post">
+<body id="digital">
+<a href="/login">Back to Log-in</a>
+
+<div class = "signupContainer">
+<h1>Sign up</h1>
+    <form action="/signup" method="post" class = "newUser">
    
         <input type="text" autocomplete="off" name="name" placeholder= "Enter your First Name" autofocus="autofocus">
-        <input type="text" autocomplete="off" name="password" placeholder ="Enter your Password" >
-        <input type="text" autocomplete="off" name="userName" placeholder ="Enter your User name" >
+        <input type="password" autocomplete="off" name="password" placeholder ="Enter your Password" >
+        <input type="password" placeholder="ReEnter Password" autocomplete="off" name="passwordVerification"> 
+        <input type="text" autocomplete="off" name="userName" placeholder ="Enter your User name" ><br>
         <input type="submit" value = "submit">
     </form>
      <div id="error">
+     {{#errorMessage}}
+    <h3> {{.}}</h3>
+     {{/errorMessage}}
     </div>
-
+</div>
 
 </body>
 </html>

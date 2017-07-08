@@ -9,13 +9,15 @@
 </head>
 <body>
     <h1>Log-in</h1>
-    <form action="/login"   method="post">
+    <form action="/login"   method="post" class="loginContainer">
+    <fieldset>
     <input type="text" placeholder="User name" name="userName" autocomplete="off" autofocus="autofocus"><br>
-    <input type="text" placeholder="Password" autocomplete="off" name ="password"><br>    
+    <input type="password" placeholder="Password" autocomplete="off" name ="password"><br>   
     <input type="submit" value="submit">
+    </fieldset>
     </form>
 
-    <form action ="/signup" method="get">
+    <form action ="/signup" method="get" class="signup">
     <input type = "submit" value="Sign up Here">
     </form>
 

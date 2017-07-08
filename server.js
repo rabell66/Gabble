@@ -5,6 +5,7 @@ const session = require("express-session");
 const authRoutes = require('./router/authroutes')
 const signupRoutes = require('./router/signuproutes')
 const messageRoutes = require('./router/messageroutes')
+const exitRoutes = require('./router/exitroutes')
 const sessionConfig = require("./sessionConfig");
 const models = require("./models");
 const app = express();
@@ -25,6 +26,7 @@ authRoutes(app)
 // app.use('/signup',signupRoute)
 signupRoutes(app);
 messageRoutes(app);
+exitRoutes(app)
 
 
 // ============================================================
