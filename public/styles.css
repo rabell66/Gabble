@@ -1,5 +1,8 @@
-body{
-    background-color:lightcoral
+html{
+    background-image:url("images/Telepathy.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+
 }
 
 .home{
@@ -7,10 +10,14 @@ body{
 }
 .friendsRoom{
 flex: 1 1 100%;
+color:#0D2C44
+
+
 
 
 }
 .userRoom{
+    color:#41A2D6;
     flex:1 1 100%;
    
 }

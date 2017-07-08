@@ -5,12 +5,56 @@ var models = require("../models");
 function messageroutes(app) {
 
   app.post("/like", function(req, res){
-  
-  var newLike = models.like.build(req.body);
+    var authorid = req.body.authorid;
+    var messageid = req.body.messageid;
+    models.like
+      .findOne({
+        where: {
+          authorid: authorid,
+          messageid: messageid
+        }
+      })
+      .then(function(foundlike) {
+        
+        return res.redirect("/");
+      })
+      .catch(function(err) {
+        return res.redirect("/login");
+      });
+      var newLike = models.like.build(req.body);
    newLike.save().then(function(savedLike){
      res.redirect("/");
     
    })
+  
+  });
+
+  app.post("/delete", function(req, res){
+    var authorid = req.body.authorid;
+    var messageid = req.body.messageid;
+    models.like
+    .destroy({
+      where:{
+        messageid:messageid
+      }
+    })
+    .then(()=>{
+    models.message
+      .destroy({
+        where: {
+          id:messageid
+        }
+      })
+      .then(()=> {
+        return res.redirect("/");
+      })
+    })
+      .catch(function(err) {
+        console.log("This is the", err)
+        // return res.redirect("/login");
+      });
+  
+  
     
   })
 

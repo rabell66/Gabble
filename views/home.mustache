@@ -16,12 +16,23 @@
     {{#userid}}
     <h3>Signed in as {{.}}
       <h3>
+     
+
         {{/userid}}
         <form action="/message" method="post">
           <textarea rows="4" cols="50" autofocus="autofocus" name="message">
    </textarea>
           <input type="submit" value="submit">
         </form>
+        <h3>Your Messages</h3>
+         {{#userMessage}}
+           <p>{{body}}</p>
+           <form class = "deletes" action="/delete" method="post">
+            <input type ="hidden" name="authorid" value ={{author.id}}>
+            <input type ="hidden" name="messageid" value ={{id}}>
+            <input class="delBtn" type="submit" value = "Delete">
+            </form>
+           {{/userMessage}}
   </div>
 
   <div class="friendsRoom">
@@ -33,7 +44,13 @@
            <form class="likes" action="/like" method="post">
            <input type ="hidden" name="messageid" value ={{id}}>
            <input type ="hidden" name="authorid" value ={{author.id}}>
-           <input class='likeBtn' type="submit" value="Like"></form>Liked by: &nbsp {{likes.length}} &nbsp users
+           <input class='likeBtn' value="like" type="submit" ></form>Liked by: &nbsp {{likes.length}} &nbsp users
+           </form>
+         <select>
+            {{#likes}}
+             <option>{{author.name}}</option>
+           {{/likes}}
+        </select>
            {{/friendsMessages}}
           
     </div>       
