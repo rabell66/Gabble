@@ -48,7 +48,7 @@ fieldset {
   height: 6vw;
   position: relative;
   left: 41.3vw;
-  top: 5vw;
+  top: 11vw;
   text-align: center;
   padding: 1vw;
   border-radius: 63px;
@@ -66,7 +66,7 @@ fieldset input {
 .signup input {
   position: relative;
   left: 47vw;
-  top: 6vw;
+  top: 11vw;
 }
 
 .home {
