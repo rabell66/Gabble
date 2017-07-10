@@ -7,7 +7,6 @@ function messageroutes(app) {
   app.post("/like", function(req, res){
     var authorid = req.body.authorid;
     var messageid = req.body.messageid;
-   console.log("NEW",models.like)
        models.like.findOne(
           {where:{
             authorid:authorid,
@@ -15,7 +14,6 @@ function messageroutes(app) {
           }}).then(function(alreadyLiked){
            
        if(alreadyLiked){
-         console.log("Made it here!!!!")
          return res.redirect("/")
           }
           var newLike = models.like.build(req.body);
@@ -60,11 +58,13 @@ function messageroutes(app) {
   })
 
 app.get("/message", function(req, res){
+   if (req.session.user) {
     res.render("home")
+    }
+   else {return res.redirect("/login")}
 })
 app.post("/message", function(req, res){
-    console.log("message", req.body.message)
-
+  
     var newMessage = models.message.build({
       body:req.body.message,
       authorid:req.session.user.id
@@ -73,9 +73,9 @@ app.post("/message", function(req, res){
     newMessage
       .save()
       .then(function(newMessage) {
-        return res.redirect("/");
+        res.redirect("/");
       })
-
+   
 
       
 })};

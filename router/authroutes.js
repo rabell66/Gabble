@@ -23,20 +23,27 @@ function authroutes(app) {
           ]
         })
         .then(function(foundMessages) {
-          let userMessages = [];
-          
-          for (i = 0; i < foundMessages.length; i++) {
+          userMessages = [];
+          friendsArray = [];
+          messageLength = foundMessages.length
+          console.log(foundMessages.length)
+          for (i = 0; i <messageLength; i++) {
+            console.log(i)
+            console.log("this is",foundMessages[i].authorid)
+            if (foundMessages[i].authorid !== req.session.user.id){
+              
+              friendsArray.push(foundMessages[i]);}
+              else{
+              userMessages.push(foundMessages[i])};
+        
             
-            if ((foundMessages[i].authorid == req.session.user.id)) {
-              userMessages.push(foundMessages[i]);
-              foundMessages.splice(i, 1);
-             
-            }
+                
           }
+         
           res.render("home", {
             user: req.session.user.displayname,
             userid:req.session.user.id,
-            friendsMessages: foundMessages,
+            friendsMessages: friendsArray,
             userMessage: userMessages
           });
           // render home
